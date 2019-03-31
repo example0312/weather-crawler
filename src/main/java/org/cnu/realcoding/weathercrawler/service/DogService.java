@@ -27,4 +27,14 @@ public class DogService {
         }
         return null;
     }
+
+    public void updateDog(Dog dog) {
+        for (int i = 0; i < dogList.size(); i++) {
+            Dog target = dogList.get(i);
+            if (target.getName().equals(dog.getName())) {
+                target.setKind(dog.getKind());
+                break;
+            }
+        }
+    }
 }
