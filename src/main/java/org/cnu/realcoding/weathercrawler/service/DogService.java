@@ -13,4 +13,8 @@ public class DogService {
     public void insertDog(Dog dog) {
         dogList.add(dog);
     }
+
+    public List<Dog> getAllDogs() {
+        return dogList;
+    }
 }
