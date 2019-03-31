@@ -31,4 +31,9 @@ public class DogController {
     public void updateDog(@RequestBody Dog dog) {
         dogService.updateDog(dog);
     }
+
+    @DeleteMapping("/dogs")
+    public void removeDog(@RequestParam String name) {
+        dogService.removeDog(name);
+    }
 }
