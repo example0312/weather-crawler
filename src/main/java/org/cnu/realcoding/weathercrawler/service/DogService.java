@@ -9,4 +9,8 @@ import java.util.List;
 @Service
 public class DogService {
     private List<Dog> dogList = new ArrayList<>();
+
+    public void insertDog(Dog dog) {
+        dogList.add(dog);
+    }
 }
