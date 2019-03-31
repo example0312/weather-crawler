@@ -26,4 +26,9 @@ public class DogController {
     public Dog getDogByName(@PathVariable String name) {
         return dogService.getDogsByName(name);
     }
+
+    @PutMapping("/dogs")
+    public void updateDog(@RequestBody Dog dog) {
+        dogService.updateDog(dog);
+    }
 }
