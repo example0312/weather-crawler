@@ -17,4 +17,14 @@ public class DogService {
     public List<Dog> getAllDogs() {
         return dogList;
     }
+
+    public Dog getDogsByName(String name) {
+        for (int i = 0; i < dogList.size(); i++) {
+            Dog target = dogList.get(i);
+            if (target.getName().equals(name)) {
+                return target;
+            }
+        }
+        return null;
+    }
 }
