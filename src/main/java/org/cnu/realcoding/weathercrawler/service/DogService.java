@@ -37,4 +37,14 @@ public class DogService {
             }
         }
     }
+
+    public void removeDog(String name) {
+        for (int i = 0; i < dogList.size(); i++) {
+            Dog target = dogList.get(i);
+            if (target.getName().equals(name)) {
+                dogList.remove(target);
+                break;
+            }
+        }
+    }
 }
