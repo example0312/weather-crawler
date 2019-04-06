@@ -1,5 +1,6 @@
 package org.cnu.realcoding.weathercrawler.service;
 
+import lombok.extern.slf4j.Slf4j;
 import org.cnu.realcoding.weathercrawler.api.AvailableCityNamesApiClient;
 import org.cnu.realcoding.weathercrawler.api.OpenWeatherMapApiClient;
 import org.cnu.realcoding.weathercrawler.domain.CurrentWeather;
@@ -11,6 +12,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 @Service
+@Slf4j
 public class WeatherService {
     @Autowired
     private AvailableCityNamesApiClient availableCityNamesApiClient;
@@ -36,5 +38,8 @@ public class WeatherService {
         cityNamesQueue.add(cityName);
 
         CurrentWeather currentWeather = openWeatherMapApiClient.getCurrentWeather(cityName);
+
+        CurrentWeather insertedCurrentWeather = currentWeatherRepository.insertCurrentWeather(currentWeather);
+        log.info("CurrentWeather has inserted successfully. CurrentWeather : {}", insertedCurrentWeather);
     }
 }
