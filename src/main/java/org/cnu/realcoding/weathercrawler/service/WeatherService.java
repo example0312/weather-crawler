@@ -3,6 +3,7 @@ package org.cnu.realcoding.weathercrawler.service;
 import org.cnu.realcoding.weathercrawler.api.AvailableCityNamesApiClient;
 import org.cnu.realcoding.weathercrawler.api.OpenWeatherMapApiClient;
 import org.cnu.realcoding.weathercrawler.domain.CurrentWeather;
+import org.cnu.realcoding.weathercrawler.repository.CurrentWeatherRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
