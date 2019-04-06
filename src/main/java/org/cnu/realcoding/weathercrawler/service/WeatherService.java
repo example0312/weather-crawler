@@ -44,4 +44,8 @@ public class WeatherService {
         CurrentWeather insertedCurrentWeather = currentWeatherRepository.insertCurrentWeather(currentWeather);
         log.info("CurrentWeather has inserted successfully. CurrentWeather : {}", insertedCurrentWeather);
     }
+
+    public CurrentWeather getCurrentWeatherByCityName(String cityName) {
+        return null;
+    }
 }
