@@ -28,6 +28,6 @@ public class WeatherController {
 
     @GetMapping("/current-weathers/by-city-name/{cityName}")
     public CurrentWeather getCurrentWeatherByCityName(@PathVariable String cityName) {
-        return null;
+        return weatherService.getCurrentWeatherByCityName(cityName);
     }
 }
