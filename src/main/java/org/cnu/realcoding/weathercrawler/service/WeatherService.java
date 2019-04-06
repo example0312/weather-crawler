@@ -15,6 +15,8 @@ public class WeatherService {
     private AvailableCityNamesApiClient availableCityNamesApiClient;
     @Autowired
     private OpenWeatherMapApiClient openWeatherMapApiClient;
+    @Autowired
+    private CurrentWeatherRepository currentWeatherRepository;
 
     private LinkedList<String> cityNamesQueue = new LinkedList<>();
 
