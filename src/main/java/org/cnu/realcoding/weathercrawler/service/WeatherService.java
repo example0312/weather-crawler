@@ -6,6 +6,7 @@ import org.cnu.realcoding.weathercrawler.api.OpenWeatherMapApiClient;
 import org.cnu.realcoding.weathercrawler.domain.CurrentWeather;
 import org.cnu.realcoding.weathercrawler.repository.CurrentWeatherRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import java.util.LinkedList;
@@ -28,6 +29,7 @@ public class WeatherService {
         return availableCityNames;
     }
 
+    @Scheduled(initialDelay = 5000L, fixedDelay = 2000L)
     public void getCurrentWeatherPeriodicallyByCityName() {
         if (cityNamesQueue.isEmpty()) {
             List<String> availableCityNames = this.getAvailableCityNames();
