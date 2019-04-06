@@ -23,6 +23,9 @@ public class WeatherService {
     }
 
     public void getCurrentWeatherPeriodicallyByCityName() {
-
+        if (cityNamesQueue.isEmpty()) {
+            List<String> availableCityNames = this.getAvailableCityNames();
+            cityNamesQueue.addAll(availableCityNames);
+        }
     }
 }
