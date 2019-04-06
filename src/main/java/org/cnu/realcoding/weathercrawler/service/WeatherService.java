@@ -13,6 +13,6 @@ public class WeatherService {
 
     public List<String> getAvailableCityNames() {
         List<String> avilableCityNames = availableCityNamesApiClient.getAvilableCityNames();
-        return null;
+        return avilableCityNames;
     }
 }
