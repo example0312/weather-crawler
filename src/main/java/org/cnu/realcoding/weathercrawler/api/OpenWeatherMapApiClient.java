@@ -16,6 +16,6 @@ public class OpenWeatherMapApiClient {
     public String getCurrentWeather(String cityName) {
         String currentWeather = restTemplate.exchange(currentWeatherUri, HttpMethod.GET, null, String.class, cityName, apiKey)
                 .getBody();
-        return null;
+        return currentWeather;
     }
 }
