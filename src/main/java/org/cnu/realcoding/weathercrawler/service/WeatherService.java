@@ -2,6 +2,7 @@ package org.cnu.realcoding.weathercrawler.service;
 
 import org.cnu.realcoding.weathercrawler.api.AvailableCityNamesApiClient;
 import org.cnu.realcoding.weathercrawler.api.OpenWeatherMapApiClient;
+import org.cnu.realcoding.weathercrawler.domain.CurrentWeather;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,5 +28,10 @@ public class WeatherService {
             List<String> availableCityNames = this.getAvailableCityNames();
             cityNamesQueue.addAll(availableCityNames);
         }
+
+        String cityName = cityNamesQueue.pop();
+        cityNamesQueue.add(cityName);
+
+        CurrentWeather currentWeather = openWeatherMapApiClient.getCurrentWeather(cityName);
     }
 }
