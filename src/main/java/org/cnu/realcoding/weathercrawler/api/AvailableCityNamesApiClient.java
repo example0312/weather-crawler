@@ -11,6 +11,8 @@ public class AvailableCityNamesApiClient {
     @Autowired
     private RestTemplate restTemplate;
 
+    private final String availableCitiesUri = "http://demo6468405.mockable.io/weather-crawlers/cities";
+
     public List<String> getAvilableCityNames() {
         return null;
     }
