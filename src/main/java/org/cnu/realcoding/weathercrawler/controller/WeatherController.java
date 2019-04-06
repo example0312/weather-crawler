@@ -2,8 +2,11 @@ package org.cnu.realcoding.weathercrawler.controller;
 
 import org.cnu.realcoding.weathercrawler.service.WeatherService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 /**
  * 아래와 같이 Controller 클래스에 @RequestMapping 을 붙이면
@@ -15,4 +18,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class WeatherController {
     @Autowired
     private WeatherService weatherService;
+
+    @GetMapping("/available-cities")
+    public List<String> getAvailableCityNames() {
+        return weatherService.getAvailableCityNames();
+    }
 }
