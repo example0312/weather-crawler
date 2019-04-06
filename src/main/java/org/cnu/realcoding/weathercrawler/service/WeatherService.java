@@ -1,6 +1,7 @@
 package org.cnu.realcoding.weathercrawler.service;
 
 import org.cnu.realcoding.weathercrawler.api.AvailableCityNamesApiClient;
+import org.cnu.realcoding.weathercrawler.api.OpenWeatherMapApiClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,6 +11,8 @@ import java.util.List;
 public class WeatherService {
     @Autowired
     private AvailableCityNamesApiClient availableCityNamesApiClient;
+    @Autowired
+    private OpenWeatherMapApiClient openWeatherMapApiClient;
 
     public List<String> getAvailableCityNames() {
         List<String> availableCityNames = availableCityNamesApiClient.getAvailableCityNames();
