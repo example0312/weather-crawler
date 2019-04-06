@@ -16,7 +16,7 @@ public class AvailableCityNamesApiClient {
     private final String availableCitiesUri = "http://demo6468405.mockable.io/weather-crawlers/cities";
     private final ParameterizedTypeReference<List<String>> responseType = new ParameterizedTypeReference<List<String>>() {};
 
-    public List<String> getAvilableCityNames() {
+    public List<String> getAvailableCityNames() {
         List<String> responseBody = restTemplate.exchange(availableCitiesUri, HttpMethod.GET, null, responseType)
                 .getBody();
         return responseBody;
