@@ -21,4 +21,8 @@ public class WeatherService {
         List<String> availableCityNames = availableCityNamesApiClient.getAvailableCityNames();
         return availableCityNames;
     }
+
+    public void getCurrentWeatherPeriodicallyByCityName() {
+
+    }
 }
