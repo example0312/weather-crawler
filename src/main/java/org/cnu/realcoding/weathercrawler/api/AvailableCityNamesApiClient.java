@@ -17,8 +17,8 @@ public class AvailableCityNamesApiClient {
     private final ParameterizedTypeReference<List<String>> responseType = new ParameterizedTypeReference<List<String>>() {};
 
     public List<String> getAvilableCityNames() {
-        String[] responseBody = restTemplate.exchange(availableCitiesUri, HttpMethod.GET, null, String[].class)
+        List<String> responseBody = restTemplate.exchange(availableCitiesUri, HttpMethod.GET, null, responseType)
                 .getBody();
-        return null;
+        return responseBody;
     }
 }
