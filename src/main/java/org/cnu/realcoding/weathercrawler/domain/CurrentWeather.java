@@ -4,7 +4,6 @@ import lombok.Data;
 
 @Data
 public class CurrentWeather {
-    private long id;
     private String name;
     private Main main;
     private Wind wind;
