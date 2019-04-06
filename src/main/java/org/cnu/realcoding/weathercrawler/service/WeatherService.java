@@ -46,6 +46,6 @@ public class WeatherService {
     }
 
     public CurrentWeather getCurrentWeatherByCityName(String cityName) {
-        return null;
+        return currentWeatherRepository.findRecentCurrentWeatherByCityName(cityName);
     }
 }
