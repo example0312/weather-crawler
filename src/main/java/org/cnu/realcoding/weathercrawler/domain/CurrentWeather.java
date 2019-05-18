@@ -2,13 +2,15 @@ package org.cnu.realcoding.weathercrawler.domain;
 
 import lombok.Data;
 
+import java.util.List;
+
 @Data
 public class CurrentWeather {
     private String name;
     private int dt;
     private String base;
     private int visibility;
-    private Weather weather;
+    private List<Weather> weather;
     private Main main;
     private Wind wind;
     private Clouds clouds;
