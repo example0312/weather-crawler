@@ -45,11 +45,15 @@ public class WeatherService {
 
         CurrentWeather currentWeather = openWeatherMapApiClient.getCurrentWeather(cityName);
 
-        CurrentWeather insertedCurrentWeather = currentWeatherRepository.insertCurrentWeather(currentWeather);
-        log.info("CurrentWeather has inserted successfully. CurrentWeather : {}", insertedCurrentWeather);
+        CurrentWeather currentWeatherFromDb = currentWeatherRepository.findCurrentWeatherByCityName(cityName);
+
+        if (currentWeatherFromDb == null || currentWeatherFromDb.getDt() != currentWeather.getDt()) {
+            CurrentWeather insertedOrUpdatedCurrentWeather = currentWeatherRepository.insertOrUpdatedCurrentWeather(currentWeather);
+            log.info("CurrentWeather has inserted or updated successfully. CurrentWeather : {}", insertedOrUpdatedCurrentWeather);
+        }
     }
 
     public CurrentWeather getCurrentWeatherByCityName(String cityName) {
-        return currentWeatherRepository.findRecentCurrentWeatherByCityName(cityName);
+        return currentWeatherRepository.findCurrentWeatherByCityName(cityName);
     }
 }
