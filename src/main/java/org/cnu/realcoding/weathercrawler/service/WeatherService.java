@@ -1,7 +1,8 @@
 package org.cnu.realcoding.weathercrawler.service;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
-import org.cnu.realcoding.weathercrawler.api.AvailableCityNamesApiClient;
 import org.cnu.realcoding.weathercrawler.api.OpenWeatherMapApiClient;
 import org.cnu.realcoding.weathercrawler.domain.CurrentWeather;
 import org.cnu.realcoding.weathercrawler.repository.CurrentWeatherRepository;
@@ -9,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -16,21 +19,22 @@ import java.util.List;
 @Slf4j
 public class WeatherService {
     @Autowired
-    private AvailableCityNamesApiClient availableCityNamesApiClient;
-    @Autowired
     private OpenWeatherMapApiClient openWeatherMapApiClient;
     @Autowired
     private CurrentWeatherRepository currentWeatherRepository;
 
     private LinkedList<String> cityNamesQueue = new LinkedList<>();
 
-    public List<String> getAvailableCityNames() {
-        List<String> availableCityNames = availableCityNamesApiClient.getAvailableCityNames();
-        return availableCityNames;
+    public List<String> getAvailableCityNames() throws IOException {
+        File availableCityNamesFile = new File("availableCityNames");
+        ObjectMapper objectMapper = new ObjectMapper();
+
+        return objectMapper.readValue(availableCityNamesFile, new TypeReference<List<String>>() {
+        });
     }
 
     @Scheduled(initialDelay = 5000L, fixedDelay = 2000L)
-    public void getCurrentWeatherPeriodicallyByCityName() {
+    public void getCurrentWeatherPeriodicallyByCityName() throws IOException {
         if (cityNamesQueue.isEmpty()) {
             List<String> availableCityNames = this.getAvailableCityNames();
             cityNamesQueue.addAll(availableCityNames);
