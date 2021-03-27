@@ -15,5 +15,5 @@ ls -al  >> /home/ec2-user/deploy.log
 cp target/*.jar /home/ec2-user/.
 cd /home/ec2-user
 
-java -jar weather-crawler-0.0.1-SNAPSHOT.jar > /dev/null 2> /dev/null < /dev/null &
+java -jar /home/ec2-user/weather-crawler-0.0.1-SNAPSHOT.jar > /dev/null 2> /dev/null < /dev/null &
 ps -ef | grep java  >> /home/ec2-user/deploy.log
