@@ -7,6 +7,8 @@ import org.cnu.realcoding.weathercrawler.api.OpenWeatherMapApiClient;
 import org.cnu.realcoding.weathercrawler.domain.CurrentWeather;
 import org.cnu.realcoding.weathercrawler.repository.CurrentWeatherRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.core.io.ResourceLoader;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
@@ -22,11 +24,15 @@ public class WeatherService {
     private OpenWeatherMapApiClient openWeatherMapApiClient;
     @Autowired
     private CurrentWeatherRepository currentWeatherRepository;
+    @Qualifier("webApplicationContext")
+    @Autowired
+    private ResourceLoader resourceLoader;
 
     private LinkedList<String> cityNamesQueue = new LinkedList<>();
 
     public List<String> getAvailableCityNames() throws IOException {
-        File availableCityNamesFile = new File("availableCityNames");
+        File availableCityNamesFile = resourceLoader.getResource("classpath:availableCityNames")
+                .getFile();
         ObjectMapper objectMapper = new ObjectMapper();
 
         return objectMapper.readValue(availableCityNamesFile, new TypeReference<List<String>>() {
