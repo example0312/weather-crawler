@@ -17,6 +17,7 @@
     </appender>
     <logger name="org.cnu.realcoding" level="INFO"/>
     <root level="INFO">
+        <appender-ref ref="dailyRollingFileAppender"/>
         <appender-ref ref="CONSOLE"/>
     </root>
 </configuration>
