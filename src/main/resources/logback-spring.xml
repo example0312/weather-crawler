@@ -5,9 +5,9 @@
 
     <appender name="dailyRollingFileAppender"
               class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>/var/log/weather-crawler.log</file>
+        <file>/var/log/cnu/weather-crawler.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>/var/log/weather-crawler-%d{yyyy-MM-dd-HH}.log.gz</fileNamePattern>
+            <fileNamePattern>/var/log/cnu/weather-crawler-%d{yyyy-MM-dd-HH}.log.gz</fileNamePattern>
             <maxHistory>720</maxHistory>
         </rollingPolicy>
         <encoder>
